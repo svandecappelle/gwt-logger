@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to='Logging'>
+	<inherits name='com.google.gwt.user.User' />
+	<inherits name="com.google.gwt.inject.Inject" />
+	<inherits name="com.google.gwt.logging.Logging" />
+	<inherits name='net.customware.gwt.presenter.Presenter' />
+
+	<inherits name="com.mizore.gwt.apprise.apprise" />
+
+	<define-property name="com.mizore.gwt.logging.report" values="ENABLED,DISABLED" />
+	<define-property name="com.mizore.gwt.logging.view" values="ENABLED,DISABLED" />
+
+	<replace-with class="com.mizore.gwt.logging.client.report.ReportOn">
+		<when-type-is class="com.mizore.gwt.logging.client.report.ReportI" />
+		<when-property-is name="com.mizore.gwt.logging.report" value="ENABLED" />
+	</replace-with>
+	
+	<replace-with class="com.mizore.gwt.logging.client.report.ReportOff">
+		<when-type-is class="com.mizore.gwt.logging.client.report.ReportI" />
+		<when-property-is name="com.mizore.gwt.logging.report" value="DISABLED" />
+	</replace-with>
+
+	<replace-with class="com.mizore.gwt.logging.client.standard.starter.On">
+		<when-type-is class="com.mizore.gwt.logging.client.standard.starter.StandardViewConfigurationsI" />
+		<when-property-is name="com.mizore.gwt.logging.view" value="ENABLED" />
+	</replace-with>
+	
+	<replace-with class="com.mizore.gwt.logging.client.standard.starter.Off">
+		<when-type-is class="com.mizore.gwt.logging.client.standard.starter.StandardViewConfigurationsI" />
+		<when-property-is name="com.mizore.gwt.logging.view" value="DISABLED" />
+	</replace-with>
+
+
+	<set-property name="gwt.logging.simpleRemoteHandler" value="DISABLED" />
+	<set-property name="gwt.logging.enabled" value="TRUE" />
+	<set-property name="gwt.logging.logLevel" value="ALL" />
+	<set-property name="gwt.logging.consoleHandler" value="ENABLED" />
+	<set-property name="gwt.logging.developmentModeHandler" value="ENABLED" />
+	<set-property name="gwt.logging.systemHandler" value="ENABLED" />
+
+	<set-property name="compiler.stackMode" value="emulated" />
+	<set-configuration-property name="compiler.emulatedStack.recordLineNumbers" value="true" />
+	<set-configuration-property name="compiler.emulatedStack.recordFileNames" value="true" />
+
+	<set-property name="com.mizore.gwt.logging.report" value="ENABLED" />
+	<set-property name="com.mizore.gwt.logging.view" value="ENABLED" />
+
+	<source path='client' />
+	<source path='shared' />
+
+	<stylesheet src="VkLogging.css" />
+
+</module>
